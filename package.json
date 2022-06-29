@@ -1,0 +1,12 @@
+{
+  "name": "Indecision-App",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Code4Blessings/Indecision-App.git",
+  "author": "Code4Blessings <robincw35@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-preset-env": "1.5.2",
+    "babel-preset-react": "6.24.1"
+  }
+}
