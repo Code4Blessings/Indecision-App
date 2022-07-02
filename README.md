@@ -28,6 +28,8 @@ see: https://babeljs.io/docs/en/
 - render template
 - test your work
 
-
+#### Challenge: Conditional Statements
+- Only render the subtitle  (and p tag) if the subtitle exist - logical and operator
+- render a new p tag - if options.length > 0 "Here are your options" Less than 0, "no options"
 
 

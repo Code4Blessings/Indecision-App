@@ -3,13 +3,15 @@ console.log('App.js is running')
 //JSX - JavaScript XML
 var webApp = {
     title: 'Indecision App',
-    subtitle: 'Created by Robin Warden'
+    subtitle: 'Created by Robin Warden',
+    options: ['one', 'two']
 }
 
 var template = (
     <div>
         <h1>{webApp.title}</h1> 
-        <p>{webApp.subtitle}</p>
+        {webApp.subtitle && <p>{webApp.subtitle}</p>}
+        {webApp.options.length > 0 ? <p>Here are your options</p> : 'No options'}
         <ol>
             <li>Item One</li>
             <li>Item Two</li>
@@ -20,10 +22,10 @@ var template = (
 var user = {
     name: 'Christine',
     age: 25,
-    location: 'Lawrenceville'
+    location: 'Lawrenceville',
 }
 
-function getLocation (location){
+const getLocation = (location) => {
     if(location) {
         return <p>{location}</p>
     }else {
@@ -34,7 +36,7 @@ function getLocation (location){
 var templateTwo = (
     <div>
         <h1>{user.name? user.name: 'Anonymous'}</h1>
-        <p>{user.age}</p>
+        {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
         {getLocation(user.location)}
     </div>
 )
@@ -42,4 +44,4 @@ var templateTwo = (
 var appRoot = document.getElementById('app')
 
 //ReactDOM.render takes in 2 arguments -- The JSX you want to render and the dom element
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);

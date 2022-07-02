@@ -5,7 +5,8 @@ console.log('App.js is running');
 //JSX - JavaScript XML
 var webApp = {
     title: 'Indecision App',
-    subtitle: 'Created by Robin Warden'
+    subtitle: 'Created by Robin Warden',
+    options: ['one', 'two']
 };
 
 var template = React.createElement(
@@ -16,11 +17,16 @@ var template = React.createElement(
         null,
         webApp.title
     ),
-    React.createElement(
+    webApp.subtitle && React.createElement(
         'p',
         null,
         webApp.subtitle
     ),
+    webApp.options.length > 0 ? React.createElement(
+        'p',
+        null,
+        'Here are your options'
+    ) : 'No options',
     React.createElement(
         'ol',
         null,
@@ -43,7 +49,7 @@ var user = {
     location: 'Lawrenceville'
 };
 
-function getLocation(location) {
+var getLocation = function getLocation(location) {
     if (location) {
         return React.createElement(
             'p',
@@ -53,7 +59,7 @@ function getLocation(location) {
     } else {
         return undefined;
     }
-}
+};
 
 var templateTwo = React.createElement(
     'div',
@@ -63,9 +69,10 @@ var templateTwo = React.createElement(
         null,
         user.name ? user.name : 'Anonymous'
     ),
-    React.createElement(
+    user.age && user.age >= 18 && React.createElement(
         'p',
         null,
+        'Age: ',
         user.age
     ),
     getLocation(user.location)
@@ -74,4 +81,4 @@ var templateTwo = React.createElement(
 var appRoot = document.getElementById('app');
 
 //ReactDOM.render takes in 2 arguments -- The JSX you want to render and the dom element
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);
