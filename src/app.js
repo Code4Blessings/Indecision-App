@@ -1,26 +1,41 @@
 console.log('App.js is running')
 
 //JSX - JavaScript XML
+var webApp = {
+    title: 'Indecision App',
+    subtitle: 'Created by Robin Warden'
+}
+
 var template = (
     <div>
-        <h1>Indecision App</h1> 
-        <p>This is some info</p>
+        <h1>{webApp.title}</h1> 
+        <p>{webApp.subtitle}</p>
         <ol>
             <li>Item One</li>
             <li>Item Two</li>
-            <li>Item Three</li>
-        </ol>
+        </ol>    
     </div>
 );
 
-var userName = 'Christine';
-var userAge = 37
+var user = {
+    name: 'Christine',
+    age: 25,
+    location: 'Lawrenceville'
+}
+
+function getLocation (location){
+    if(location) {
+        return <p>{location}</p>
+    }else {
+        return undefined;
+    }
+}
 
 var templateTwo = (
     <div>
-        <h1>{userName}</h1>
-        <p>{userAge}</p>
-        <p>Location: Lawrenceville</p>
+        <h1>{user.name? user.name: 'Anonymous'}</h1>
+        <p>{user.age}</p>
+        {getLocation(user.location)}
     </div>
 )
 

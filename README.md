@@ -1,6 +1,12 @@
 # Indecision-App
 Based on the Udemy React Course by Andrew Mead
 
+**To Start Babel (On one terminal)**
+babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch
+
+**On the other terminal**
+live-server public
+
 ## ReactDOM
 
 - ReactDOM.render takes in 2 arguments -- The JSX you want to render and the dom element
@@ -16,6 +22,11 @@ see: https://babeljs.io/docs/en/
 - h1 --> Robin Warden
 - p -> Age: 26
 - Render templateTwo instead of template
+
+#### Challenge: Create app object title/subtitle
+- user title/subtitle in the template
+- render template
+- test your work
 
 
 

@@ -3,18 +3,23 @@
 console.log('App.js is running');
 
 //JSX - JavaScript XML
+var webApp = {
+    title: 'Indecision App',
+    subtitle: 'Created by Robin Warden'
+};
+
 var template = React.createElement(
     'div',
     null,
     React.createElement(
         'h1',
         null,
-        'Indecision App'
+        webApp.title
     ),
     React.createElement(
         'p',
         null,
-        'This is some info'
+        webApp.subtitle
     ),
     React.createElement(
         'ol',
@@ -28,17 +33,27 @@ var template = React.createElement(
             'li',
             null,
             'Item Two'
-        ),
-        React.createElement(
-            'li',
-            null,
-            'Item Three'
         )
     )
 );
 
-var userName = 'Christine';
-var userAge = 37;
+var user = {
+    name: 'Christine',
+    age: 25,
+    location: 'Lawrenceville'
+};
+
+function getLocation(location) {
+    if (location) {
+        return React.createElement(
+            'p',
+            null,
+            location
+        );
+    } else {
+        return undefined;
+    }
+}
 
 var templateTwo = React.createElement(
     'div',
@@ -46,18 +61,14 @@ var templateTwo = React.createElement(
     React.createElement(
         'h1',
         null,
-        userName
+        user.name ? user.name : 'Anonymous'
     ),
     React.createElement(
         'p',
         null,
-        userAge
+        user.age
     ),
-    React.createElement(
-        'p',
-        null,
-        'Location: Lawrenceville'
-    )
+    getLocation(user.location)
 );
 
 var appRoot = document.getElementById('app');
