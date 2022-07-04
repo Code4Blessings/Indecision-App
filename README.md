@@ -32,4 +32,8 @@ see: https://babeljs.io/docs/en/
 - Only render the subtitle  (and p tag) if the subtitle exist - logical and operator
 - render a new p tag - if options.length > 0 "Here are your options" Less than 0, "no options"
 
+#### Arrow Functions (solution found in src/playground/es6-arrow-function.js)
+- getFirstName('Mike Smith')
+- Create regular arrow function
+- Create arrow function using shorthand syntax
 
