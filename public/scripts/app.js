@@ -1,46 +1,106 @@
 'use strict';
 
-//Arguments object is no longer bound with arrow functions
+console.log('App.js is running');
 
-
-var add = function add(a, b) {
-    //console.log(arguments)
-    return a + b;
+//JSX - JavaScript XML
+var webApp = {
+    title: 'Indecision App',
+    subtitle: 'Created by Robin Warden',
+    options: ['one', 'two']
 };
 
-console.log(add(55, 1));
-
-//this keyword is no longer bound with the function keyword but it is bound to arrow functions but can arrow functions do not nind it's own this value. 
-//You can however delete the function keyword in the parent method as shown below.
+var template = React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'h1',
+        null,
+        webApp.title
+    ),
+    webApp.subtitle && React.createElement(
+        'p',
+        null,
+        webApp.subtitle
+    ),
+    webApp.options.length > 0 ? React.createElement(
+        'p',
+        null,
+        'Here are your options'
+    ) : 'No options',
+    React.createElement(
+        'ol',
+        null,
+        React.createElement(
+            'li',
+            null,
+            'Item One'
+        ),
+        React.createElement(
+            'li',
+            null,
+            'Item Two'
+        )
+    )
+);
 
 var user = {
-    name: 'Hermione',
-    cities: ['Coram', 'Richmond', 'Tamarac', 'Lawrenceville'],
-    printPlacesLived: function printPlacesLived() {
-        var _this = this;
+    name: 'Christine',
+    age: 25,
+    location: 'Lawrenceville'
+};
 
-        var cityMessages = this.cities.map(function (city) {
-            return _this.name + ' has lived in ' + city;
-        });
-        return cityMessages;
-        //the this keyword is not accessible in the below anonymous function. B
+var getLocation = function getLocation(location) {
+    if (location) {
+        return React.createElement(
+            'p',
+            null,
+            location
+        );
+    } else {
+        return undefined;
     }
 };
 
-console.log(user.printPlacesLived());
-
-var multiplier = {
-    // numbers - array of numbers
-    numbers: [1, 2, 3, 4, 5],
-    // multiplyBy -single number
-    multiply: function multiply(num) {
-        var multiplied = this.numbers.map(function (number) {
-            return num * number;
-        });
-        return multiplied;
-    }
-    // muliply - return a new array where the number have been multiplied
-
+var count = 0;
+var addOne = function addOne() {
+    console.log('addOne');
 };
 
-console.log(multiplier.multiply(5));
+var minusOne = function minusOne() {
+    console.log('minusOne');
+};
+
+var reset = function reset() {
+    console.log('reset');
+};
+
+var templateTwo = React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'h1',
+        null,
+        'Count: ',
+        count
+    ),
+    React.createElement(
+        'button',
+        { onClick: addOne, className: 'button' },
+        '+1'
+    ),
+    React.createElement(
+        'button',
+        { onClick: minusOne, className: 'button' },
+        '-1'
+    ),
+    React.createElement(
+        'button',
+        { onClick: reset, className: 'button' },
+        'reset'
+    )
+);
+
+var appRoot = document.getElementById('app');
+
+//ReactDOM.render takes in 2 arguments -- The JSX you want to render and the dom element
+ReactDOM.render(templateTwo, appRoot);

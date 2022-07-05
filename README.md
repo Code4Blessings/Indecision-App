@@ -46,3 +46,9 @@ const multiplier = {
 }
 
 console.log(multiplier.muliply());
+
+#### Challenge: Buttons
+
+- Make button "-1"  - setup minusOne function and register  and log "minusOne"
+- Maket reset button "reset" - setup reset function -log "reset
+
