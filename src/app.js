@@ -13,26 +13,10 @@ const onFormSubmit = (e) => {
         webApp.options.push(option);
         e.target.elements.option.value = '';
     }
+    renderOptionsApp();
 }
 
-const template = (
-    <div>
-        <h1>{webApp.title}</h1> 
-        {webApp.subtitle && <p>{webApp.subtitle}</p>}
-        {webApp.options.length > 0 ? <p>Here are your options</p> : 'No options'}
-        <p>{webApp.options.length}</p>
-        <ol>
-            <li>Item One</li>
-            <li>Item Two</li>
-        </ol> 
-        <form onSubmit={onFormSubmit}>
-            <input
-             type="text" 
-             name= "option"/>
-            <button>Add Option</button>
-        </form>   
-    </div>
-);
+
 
 const user = {
     name: 'Christine',
@@ -49,5 +33,31 @@ const getLocation = (location) => {
 }
 
 const appRoot = document.getElementById('app')
-ReactDOM.render(template, appRoot);
+
+const renderOptionsApp = () => {
+    const template = (
+        <div>
+            <h1>{webApp.title}</h1> 
+            {webApp.subtitle && <p>{webApp.subtitle}</p>}
+            {webApp.options.length > 0 ? <p>Here are your options</p> : 'No options'}
+            <p>{webApp.options.length}</p>
+            <ol>
+                <li>Item One</li>
+                <li>Item Two</li>
+            </ol> 
+            <form onSubmit={onFormSubmit}>
+                <input
+                type="text" 
+                name= "option"/>
+                <button>Add Option</button>
+            </form>   
+        </div>
+    );
+    ReactDOM.render(template, appRoot);
+}
+
+renderOptionsApp();
+
+
+
 
