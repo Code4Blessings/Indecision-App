@@ -5,8 +5,16 @@ console.log('App.js is running');
 //JSX - JavaScript XML
 var webApp = {
     title: 'Indecision App',
-    subtitle: 'Created by Robin Warden',
-    options: ['one', 'two']
+    subtitle: 'Put Your Life In the Hands of a Computer',
+    options: []
+};
+var onFormSubmit = function onFormSubmit(e) {
+    e.preventDefault();
+    var option = e.target.elements.option.value;
+    if (option) {
+        webApp.options.push(option);
+        e.target.elements.option.value = '';
+    }
 };
 
 var template = React.createElement(
@@ -28,6 +36,11 @@ var template = React.createElement(
         'Here are your options'
     ) : 'No options',
     React.createElement(
+        'p',
+        null,
+        webApp.options.length
+    ),
+    React.createElement(
         'ol',
         null,
         React.createElement(
@@ -39,6 +52,18 @@ var template = React.createElement(
             'li',
             null,
             'Item Two'
+        )
+    ),
+    React.createElement(
+        'form',
+        { onSubmit: onFormSubmit },
+        React.createElement('input', {
+            type: 'text',
+            name: 'option' }),
+        React.createElement(
+            'button',
+            null,
+            'Add Option'
         )
     )
 );
@@ -61,53 +86,5 @@ var getLocation = function getLocation(location) {
     }
 };
 
-var count = 0;
-var addOne = function addOne() {
-    count++;
-    renderCounterApp();
-};
-
-var minusOne = function minusOne() {
-    count--;
-    renderCounterApp();
-};
-
-var reset = function reset() {
-    count = 0;
-    renderCounterApp();
-};
-
 var appRoot = document.getElementById('app');
-
-var renderCounterApp = function renderCounterApp() {
-    var templateTwo = React.createElement(
-        'div',
-        null,
-        React.createElement(
-            'h1',
-            null,
-            'Count: ',
-            count
-        ),
-        React.createElement(
-            'button',
-            { onClick: addOne, className: 'button' },
-            '+1'
-        ),
-        React.createElement(
-            'button',
-            { onClick: minusOne, className: 'button' },
-            '-1'
-        ),
-        React.createElement(
-            'button',
-            { onClick: reset, className: 'button' },
-            'reset'
-        )
-    );
-    ReactDOM.render(templateTwo, appRoot);
-};
-
-renderCounterApp();
-
-//ReactDOM.render takes in 2 arguments -- The JSX you want to render and the dom element
+ReactDOM.render(template, appRoot);

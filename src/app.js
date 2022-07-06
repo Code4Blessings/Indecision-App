@@ -3,8 +3,16 @@ console.log('App.js is running')
 //JSX - JavaScript XML
 const webApp = {
     title: 'Indecision App',
-    subtitle: 'Created by Robin Warden',
-    options: ['one', 'two']
+    subtitle: 'Put Your Life In the Hands of a Computer',
+    options: []
+}
+const onFormSubmit = (e) => {
+    e.preventDefault()
+    const option = e.target.elements.option.value
+    if(option) {
+        webApp.options.push(option);
+        e.target.elements.option.value = '';
+    }
 }
 
 const template = (
@@ -12,10 +20,17 @@ const template = (
         <h1>{webApp.title}</h1> 
         {webApp.subtitle && <p>{webApp.subtitle}</p>}
         {webApp.options.length > 0 ? <p>Here are your options</p> : 'No options'}
+        <p>{webApp.options.length}</p>
         <ol>
             <li>Item One</li>
             <li>Item Two</li>
-        </ol>    
+        </ol> 
+        <form onSubmit={onFormSubmit}>
+            <input
+             type="text" 
+             name= "option"/>
+            <button>Add Option</button>
+        </form>   
     </div>
 );
 
@@ -33,38 +48,6 @@ const getLocation = (location) => {
     }
 }
 
-let count = 0;
-const addOne = () => {
-    count++
-    renderCounterApp();
-}
-
-const minusOne = () => {
-    count--
-    renderCounterApp();
-}
-
-const reset = () => {
-    count = 0
-    renderCounterApp();
-}
-
-
-
 const appRoot = document.getElementById('app')
+ReactDOM.render(template, appRoot);
 
-const renderCounterApp = () => {
-    const templateTwo = (
-        <div>
-            <h1>Count: {count}</h1>
-            <button onClick={addOne} className='button'>+1</button>
-            <button onClick={minusOne} className='button'>-1</button>
-            <button onClick={reset} className='button'>reset</button>
-        </div>
-    );
-    ReactDOM.render(templateTwo, appRoot);
-}
-
-renderCounterApp();
-
-//ReactDOM.render takes in 2 arguments -- The JSX you want to render and the dom element
