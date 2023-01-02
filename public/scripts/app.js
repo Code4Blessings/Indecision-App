@@ -66,41 +66,20 @@ var renderOptionsApp = function renderOptionsApp() {
             'Here are your options'
         ) : 'No options',
         React.createElement(
-            'p',
-            null,
-            webApp.options.length
-        ),
-        React.createElement(
             'button',
             { onClick: removeAll },
             'Remove All'
         ),
-        [React.createElement(
-            'p',
-            { key: '1' },
-            'a'
-        ), React.createElement(
-            'p',
-            { key: '2' },
-            'b'
-        ), React.createElement(
-            'p',
-            { key: '3' },
-            'c'
-        )],
         React.createElement(
             'ol',
             null,
-            React.createElement(
-                'li',
-                null,
-                'Item One'
-            ),
-            React.createElement(
-                'li',
-                null,
-                'Item Two'
-            )
+            webApp.options.map(function (option) {
+                return React.createElement(
+                    'li',
+                    { key: option },
+                    option
+                );
+            })
         ),
         React.createElement(
             'form',

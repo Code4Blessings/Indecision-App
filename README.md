@@ -65,3 +65,5 @@ console.log(multiplier.muliply());
 
 - On click -> wipe the array -> rerender
 
+#### Challenge: Map over webApp.options 
+-   Get back an array of list items (set key and text)

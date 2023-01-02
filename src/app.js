@@ -48,14 +48,12 @@ const renderOptionsApp = () => {
             <h1>{webApp.title}</h1> 
             {webApp.subtitle && <p>{webApp.subtitle}</p>}
             {webApp.options.length > 0 ? <p>Here are your options</p> : 'No options'}
-            <p>{webApp.options.length}</p>
+            
             <button onClick={removeAll}>Remove All</button>
-            {
-                [<p key='1'>a</p>, <p key='2'>b</p>, <p key='3'>c</p>]
-            }
             <ol>
-                <li>Item One</li>
-                <li>Item Two</li>
+                {
+                    webApp.options.map((option) => <li key={option}>{option}</li>)
+                }
             </ol> 
             <form onSubmit={onFormSubmit}>
                 <input
