@@ -5,7 +5,8 @@ const webApp = {
     title: 'Indecision App',
     subtitle: 'Put Your Life In the Hands of a Computer',
     options: []
-}
+};
+
 const onFormSubmit = (e) => {
     e.preventDefault()
     const option = e.target.elements.option.value
@@ -32,7 +33,14 @@ const getLocation = (location) => {
     }
 }
 
+const removeAll = () => {
+    webApp.options = []
+    renderOptionsApp()
+}
+
 const appRoot = document.getElementById('app')
+
+const numbers = [55, 101, 1000]
 
 const renderOptionsApp = () => {
     const template = (
@@ -41,6 +49,10 @@ const renderOptionsApp = () => {
             {webApp.subtitle && <p>{webApp.subtitle}</p>}
             {webApp.options.length > 0 ? <p>Here are your options</p> : 'No options'}
             <p>{webApp.options.length}</p>
+            <button onClick={removeAll}>Remove All</button>
+            {
+                [<p key='1'>a</p>, <p key='2'>b</p>, <p key='3'>c</p>]
+            }
             <ol>
                 <li>Item One</li>
                 <li>Item Two</li>

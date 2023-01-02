@@ -8,6 +8,7 @@ var webApp = {
     subtitle: 'Put Your Life In the Hands of a Computer',
     options: []
 };
+
 var onFormSubmit = function onFormSubmit(e) {
     e.preventDefault();
     var option = e.target.elements.option.value;
@@ -36,7 +37,14 @@ var getLocation = function getLocation(location) {
     }
 };
 
+var removeAll = function removeAll() {
+    webApp.options = [];
+    renderOptionsApp();
+};
+
 var appRoot = document.getElementById('app');
+
+var numbers = [55, 101, 1000];
 
 var renderOptionsApp = function renderOptionsApp() {
     var template = React.createElement(
@@ -62,6 +70,24 @@ var renderOptionsApp = function renderOptionsApp() {
             null,
             webApp.options.length
         ),
+        React.createElement(
+            'button',
+            { onClick: removeAll },
+            'Remove All'
+        ),
+        [React.createElement(
+            'p',
+            { key: '1' },
+            'a'
+        ), React.createElement(
+            'p',
+            { key: '2' },
+            'b'
+        ), React.createElement(
+            'p',
+            { key: '3' },
+            'c'
+        )],
         React.createElement(
             'ol',
             null,

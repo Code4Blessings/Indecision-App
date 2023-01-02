@@ -1,6 +1,9 @@
 # Indecision-App
 Based on the Udemy React Course by Andrew Mead
 
+
+**Need to start the application using 2 terminals**
+
 **To Start Babel (On one terminal)**
 babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch
 
@@ -57,3 +60,8 @@ console.log(multiplier.muliply());
 - Create render function that renders the new jsx
 - Call it right away
 - Call it after the options array added to
+
+#### Challenge: Create "Remove All" button above list
+
+- On click -> wipe the array -> rerender
+
