@@ -4,10 +4,20 @@ console.log('App is running');
 
 var App = {
     title: 'Visibility Toggle',
-    subTitle: 'These are some details you can now see!'
+    subTitle: 'These are some details you can now see!',
+    details: []
 };
 
-var onToggle = function onToggle() {};
+var toggle = 'Show Details';
+var onToggle = function onToggle() {
+    toggle = 'Hide Details';
+    render();
+};
+
+var onShowDetails = function onShowDetails(e) {
+    e.preventDefault();
+    e.target.details = '';
+};
 
 var appRoot = document.getElementById('app');
 
@@ -21,9 +31,19 @@ var render = function render() {
             App.title
         ),
         React.createElement(
-            'button',
-            { onClick: onToggle },
-            'Show Details'
+            'form',
+            { onSubmit: onShowDetails },
+            React.createElement(
+                'button',
+                { onClick: onToggle, className: 'button' },
+                toggle
+            ),
+            React.createElement(
+                'p',
+                null,
+                App.subTitle
+            ),
+            [23, 35, 56]
         )
     );
     ReactDOM.render(template2, appRoot);
